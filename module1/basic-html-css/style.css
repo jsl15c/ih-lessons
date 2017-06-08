@@ -1,0 +1,22 @@
+html, body {
+  margin:0;
+  padding:0;
+}
+
+@keyframes hover {
+  0% {left:0px}
+  50% {left:100px;}
+  100% {left:0px;}
+}
+
+h1 {
+  color:black;
+}
+
+img {
+  position: relative;
+  animation-name: hover;
+  animation-duration: 2s;
+  animation-timing-function:linear;
+  animation-iteration-count: infinite;
+}

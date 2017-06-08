@@ -1,0 +1,101 @@
+@import 'reset';
+@import 'variables';
+
+$font-stack:    Helvetica, sans-serif;
+$primary-color: #fff;
+$blue-color:#00D1AE;
+
+body {
+  font:  100% $font-stack;
+  color: $primary-color;
+}
+
+.wrapper {
+  // border:5px solid $blue-color;
+  // margin:100px auto 0;
+  // width:40%;
+
+  .card-container {
+    // background:$blue-color;
+    // height:auto;
+    // margin:20px auto;
+    // width:90%;
+    // animation: 1s colors linear infinite;
+  }
+}
+
+.col-1-2 {
+    width:50%;
+    // float:left;
+    position: relative;
+    margin:100px auto;
+
+      img {
+        width:200px;
+        height:200px;
+        margin:20px;
+        position: relative;
+        z-index:3;
+      }
+
+      img {
+        animation:2s dance linear infinite;
+        cursor: auto;
+      }
+
+      .dots {
+        position: relative;
+        z-index:1;
+        width:200px;
+        height:200px;
+        top:-230px;
+        left:20px;
+        animation:2s dance linear infinite;
+        > div {
+          background: #fff;
+          height:50px;
+          width:50px;
+          border-radius: 100%;
+          position: absolute;
+          animation: 2s colors ease-in infinite;
+        }
+        .dot1 {
+          top:10px;
+          left:80px;
+        }
+        .dot2 {
+          top:125px;
+          left:15px;
+          }
+        .dot3 {
+          top:115px;
+          left:140px;
+        }
+      }
+    }
+
+.bottom-container {
+  // background:#000;
+  // width:100%;
+  // height:auto;
+  // text-align:center;
+  // color:#fff;
+  // clear:both;
+
+  p {
+    padding:20px;
+  }
+}
+
+@keyframes dance {
+  0% {transform:rotate(0deg)}
+  100% {transform:rotate(360deg)}
+}
+
+@keyframes colors {
+  0% {background:gold}
+  25% {background:red}
+  50% {background:blue}
+  75% {background:green}
+  100% {background:purple}
+}

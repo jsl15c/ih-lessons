@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>bootstrap</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css.map" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4 first">
+          <p class="h3">first row
+          <span class="glyphicon glyphicon-floppy-disk"></span></p>
+        </div>
+        <div class="col-sm-4 second">
+          second row
+        </div>
+        <div class="col-sm-4 third">
+          third row
+        </div>
+      </div>
+
+    </div>
+    <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+  </body>
+</html>
+
+<style>
+.row {
+  padding:50px 0px;
+}
+
+.row > div:hover {
+  opacity:0.5;
+  transition: 0.3s ease-in;
+  cursor: pointer;
+}
+
+.col-sm-4 {
+  text-align: center;
+  border:1px solid blue;
+}
+
+.first {
+  background: red;
+}
+
+.second {
+  background: green;
+}
+
+.third {
+  background:blue;
+}
+</style>
