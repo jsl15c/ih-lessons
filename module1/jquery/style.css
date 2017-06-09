@@ -1,0 +1,28 @@
+#hot-tag {
+  transition: 0.6s ease-in;
+}
+
+#increase-btn {
+  position: absolute;
+  top:150px;
+}
+
+.warm {
+  color:yellow;
+}
+
+.hot {
+  font-size:35px;
+  font-style:italic;
+  color:orange;
+}
+
+.really-hot {
+  font-style:italic;
+  font-size:45px;
+  color:red;
+}
+
+body {
+  text-align: center;
+}
