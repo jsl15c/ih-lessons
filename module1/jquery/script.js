@@ -52,6 +52,12 @@ $(document).ready(function(){
     else if (currentCount > 5) {
       $('#hot-tag').addClass('warm');
     }
+  });
+});
 
+$(document).ready(function() {
+  $('#src-image').click(function() {
+    // theEvent.preventDefault();
+    $('#src-image').fadeOut(7000);
   });
 });
