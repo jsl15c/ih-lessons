@@ -35,24 +35,30 @@ $(document).ready(function() {
 });
 
 $(document).ready(function () {
+  var leftAmount = 0;
+  var topAmount = 0;
   // keydown, keyup, or keypress
   $(document).keydown(function (event) {
     event.preventDefault();
     // up arrow key
     if (event.which === 38) {
-      alert('up key!');
+      topAmount -= 20;
     }
     // right arrow key
     else if (event.which === 39) {
-      alert('right key!');
+      leftAmount += 20;
     }
     // down arrow key
     else if (event.which === 40) {
-      alert('down kewhichy!');
+      topAmount += 20;
     }
     // right arrow key
     else if (event.which === 37) {
-      alert('left key!');
+      leftAmount -= 20;
     }
+
+    $('#practically-everything').css('left', leftAmount + 'px');
+    $('#practically-everything').css('top', topAmount + 'px');
+    $('#practically-everything').css('position', 'relative');
   });
 });
