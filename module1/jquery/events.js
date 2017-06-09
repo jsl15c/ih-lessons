@@ -33,3 +33,26 @@ $(document).ready(function() {
     }
   });
 });
+
+$(document).ready(function () {
+  // keydown, keyup, or keypress
+  $(document).keydown(function (event) {
+    event.preventDefault();
+    // up arrow key
+    if (event.which === 38) {
+      alert('up key!');
+    }
+    // right arrow key
+    else if (event.which === 39) {
+      alert('right key!');
+    }
+    // down arrow key
+    else if (event.which === 40) {
+      alert('down kewhichy!');
+    }
+    // right arrow key
+    else if (event.which === 37) {
+      alert('left key!');
+    }
+  });
+});
