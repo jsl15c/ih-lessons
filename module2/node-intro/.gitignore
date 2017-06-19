@@ -1,6 +1,8 @@
 # ignore the node_modules folder in .git
 
 node_modules
+
+#ignore macOS file system
 .DS_Store
 
 # to create your own .gitignore file, run this is the terminal:
