@@ -43,6 +43,9 @@ $(document).ready(function () {
     // up arrow key
     if (event.which === 38) {
       topAmount -= 20;
+      if (topAmount === -140) {
+        topAmount = 780;
+      }
     }
     // right arrow key
     else if (event.which === 39) {
@@ -51,6 +54,9 @@ $(document).ready(function () {
     // down arrow key
     else if (event.which === 40) {
       topAmount += 20;
+      if (topAmount === 780) {
+        topAmount = -140;
+      }
     }
     // right arrow key
     else if (event.which === 37) {
