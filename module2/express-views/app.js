@@ -8,7 +8,7 @@ const app = express();
 // imports the ejs package and allows us to use separate view files
 app.set('view engine', 'ejs');
 
-// views folder files in pages folder
+// views folder files in templates folder
 app.set('views', 'templates');
 
 // hosts all the files inside the public folder from localhost:3000
@@ -18,7 +18,10 @@ app.use(express.static('public'));
 app.use(expressLayouts);
 
 // tells express that our layout file is "templates/may-master-layout.ejs"
-app.set('layout', 'may-master-layout.ejs');
+app.set('layout', 'my-master-layout.ejs');
+
+// local variables of views - default value
+app.locals.myTitle = 'Express Views';
 
 // ROUTES
 app.get('/', (req, res, next) => {
@@ -63,7 +66,8 @@ app.get('/accomplishments', (reg, res, next) => {
 
   res.render('accomplishments-view.ejs', {
     accomplishmentsForView:accomplishmentsList,
-    featuredAccomplishment:accomplishmentsList[randomIndex]
+    featuredAccomplishment:accomplishmentsList[randomIndex],
+    myTitle:'Accomplishments'
   });
 });
 
