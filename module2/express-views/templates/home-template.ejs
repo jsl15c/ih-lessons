@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Express Templates</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <h1>Express Views</h1>
+    <p> Hello, <%= viewName %></p>
+    <p> You are <%= viewAge %> years old.</p>
+    <p> Question: What the heck is EJS? </p>
+
+    <p> Answer: It lets you add Javascript logic to the creation of your HTML. </p>
+
+    <% for (let i = 0; i < 1000; i++) { %>
+      <% if ( i % 2 === 0) { %>
+        <div class="red"><%= i %></div>
+      <% }
+
+      else { %>
+        <div class="black"><%= i %></div>
+      <% } %>
+    <% } %>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="css/style.css" />
+  <title>Accomplishments View</title>
+</head>
+  <body>
+    <h1>Class Accomplishments</h1>
+
+    <section class="featured-accomp">
+      <h2><%= featuredAccomplishment.award %></h2>
+
+      <% if (featuredAccomplishment.person === 'Kevin') { %>
+        <p>
+          Not to exclude other TAs like Ariel, but Kevin has been awarded
+          <i><%= featuredAccomplishment.award %></i>
+        <p>
+        <%} else { %>
+            <p>
+             Put the spotlight on <b><%= featuredAccomplishment.person %></b> for being awarded
+             <i><%= featuredAccomplishment.award %></i>
+           </p>
+        <%  } %>
+    </section>
+
+    <ul>
+    <% accomplishmentsForView.forEach((oneAccomp) => { %>
+        <li>
+          <h2><%= oneAccomp.award %></h2>
+          <p>Awarded to: <b><%= oneAccomp.person %></b></p>
+        </li>
+      <% }) %>
+    </ul>
+
+  <script src="js/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+body {
+  font-family:'Avenir';
+  font-weight: 300;
+  letter-spacing: 2px;
+}
+
+.red {
+  background-color:red;
+  color:#fff;
+}
+
+.black {
+  color:black;
+}
+
+.featured-accomp {
+  background:goldenrod;
+  padding:50px;
+  border-radius: 25px;
+  box-shadow: 0px 0px 5px black;
+  text-align: center;
+}
