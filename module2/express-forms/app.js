@@ -33,6 +33,30 @@ app.get('/search', (req, res, next) => {
   res.render('search-form-view.ejs');
 });
 
+// STEP 2 of search form submission
+app.get('/results', (req, res, next) => {
+/*   |       |
+     |       ------------------
+     -----------              |
+               |              |
+<form method="get" action="/results">  */
+// req.query refers to the data in the "query string"
+// (?searchTerm=google&interestingThing=on)
+const myTerm = req.query.searchTerm;
+const myCheckbox = req.query.interestThing;
+
+if (myCheckbox === 'on') {
+  res.render('pizza-results.ejs', {
+    theSearch:myTerm,
+  });
+}
+else {
+  res.render('results-view.ejs', {
+    theSearch:myTerm,
+  });
+  }
+});
+
 
 // ========================================
 

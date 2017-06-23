@@ -1,10 +1,18 @@
 <div class="search-form">
 <h2>search</h2>
-<form method="get">
+
+<!--
+which VERB to use
+               |    URL address to submit to
+               |             |                     -->
+<form method="get" action="/results">
+  <!-- app.get('.results', (...) => ) -->
   <label for="search-term-input">search the web</label>
-  <input type="search" placeholder="search" id="search-term-input"/><br />
-  <input id="interests-box" type="checkbox" />
+  <input type="search" id="search-term-input" name="searchTerm"/><br />
+  <input id="interests-box" type="checkbox" name="interestThing"/>
   <label for="interests-box">interested in pizza?</label>
   <button>search</button>
 </form>
+
+
 </div>
