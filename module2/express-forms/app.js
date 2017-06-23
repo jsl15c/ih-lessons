@@ -28,6 +28,12 @@ app.get('/', (req, res, next) => {
 });
 
 
+// STEP 1 of search form
+app.get('/search', (req, res, next) => {
+  res.render('search-form-view.ejs');
+});
+
+
 // ========================================
 
 

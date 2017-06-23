@@ -5,6 +5,10 @@ body {
   overflow-x: hidden;
 }
 
+.container {
+  text-align: justify;
+}
+
 h1, h2 {
   letter-spacing: 2px;
 }
@@ -33,4 +37,10 @@ nav a {
   margin-left:20px;
   text-decoration: none;
   color:#000;
+}
+
+.search-form {
+  text-align:center;
+  width:50%;
+  margin:0 auto;
 }
