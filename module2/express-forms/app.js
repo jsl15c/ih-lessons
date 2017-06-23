@@ -1,5 +1,6 @@
 const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
+const bodyParser = require('body-parser');
 
 const app = express();
 
@@ -18,6 +19,9 @@ app.use(expressLayouts);
 // tells express that our layout file is "views/layout.ejs"
     // if layout file is called "layout.ejs", this is optional
 app.set('layout', 'layout.ejs');
+
+// body parser
+app.use(bodyParser.urlencoded({extended:true}));
 
 
 
@@ -62,6 +66,28 @@ else {
     theSearch:myTerm,
   });
   }
+});
+
+
+
+// STEP 1 of login form submission
+app.get('/login', (req, res, next) => {
+// display "views/login-form-view"
+  res.render('login-form-view.ejs');
+});
+
+app.post('/check-login', (req, res, next) => {
+
+  const userEmail = req.body.emailValue;
+  const userPassword = req.body.passwordValue;
+
+  if (userEmail === 'jarrod@me.com' && userPassword === 'abc123') {
+    res.render('welcome-view.ejs');
+  }
+  else {
+    res.render('go-away-view.ejs');
+  }
+
 });
 
 
