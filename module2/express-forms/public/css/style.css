@@ -1,0 +1,36 @@
+body {
+  margin:0;
+  font-family: 'Avenir';
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+h1, h2 {
+  letter-spacing: 2px;
+}
+
+header {
+  height:80px;
+  line-height: 80px;
+  border-bottom: 1px solid black;
+  overflow:hidden;
+  width:100%;
+  background:#fff;
+}
+
+header h1 {
+  float:left;
+  margin:0;
+  margin-left:80px;
+}
+
+nav {
+  float:right;
+  margin-right:80px;
+}
+
+nav a {
+  margin-left:20px;
+  text-decoration: none;
+  color:#000;
+}
