@@ -1,6 +1,7 @@
 const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
 const bodyParser = require('body-parser');
+const morgan = require('morgan');
 
 const app = express();
 
@@ -16,6 +17,9 @@ app.use(express.static('public'));
 // tells express wen want to use the EJS package
 app.use(expressLayouts);
 
+// console.log(information about the connections)
+app.use(morgan('dev'));
+
 // tells express that our layout file is "views/layout.ejs"
     // if layout file is called "layout.ejs", this is optional
 app.set('layout', 'layout.ejs');
@@ -23,7 +27,12 @@ app.set('layout', 'layout.ejs');
 // body parser
 app.use(bodyParser.urlencoded({extended:true}));
 
-
+// define own middleware
+app.use((req, res, next) => {
+  console.log('My middleware: 🖥🖱');
+  req.pizza  = '🍕';
+  next();
+});
 
 
 // =============== ROUTES 🤙 ==============
@@ -35,6 +44,7 @@ app.get('/', (req, res, next) => {
 // STEP 1 of search form
 app.get('/search', (req, res, next) => {
   res.render('search-form-view.ejs');
+  console.log('In the /earch route', req.pizza);
 });
 
 
