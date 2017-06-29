@@ -4,7 +4,7 @@
 const passport = require('passport');
 const bcrypt = require('bcrypt');
 
-const UserModel = require('../models/user-model.js';)
+const UserModel = require('../models/user-model.js');
 
 // serializeUser (controls what goes into the bowl)
 
