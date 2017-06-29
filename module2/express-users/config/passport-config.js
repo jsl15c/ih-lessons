@@ -43,8 +43,13 @@ passport.use(new LocalStrategy(
    );
 
    // #2: if there is a user with that username, is the password correct?
-   if (bcrypt.compareSync(a, b) === false) {
-
+   if (bcrypt.compareSync(formPassword, userInfo.encryptedPassword) === false) {
+     // in Passport, if you call the next() with "false", login failed
+     next(null, false);
+     return;
    }
+
+   // if we pass those if statements
+   next(null, userInfo);
  }
 ));
