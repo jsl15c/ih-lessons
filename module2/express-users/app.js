@@ -6,7 +6,11 @@ const cookieParser = require('cookie-parser');
 const bodyParser   = require('body-parser');
 const layouts      = require('express-ejs-layouts');
 const mongoose     = require('mongoose');
+const session      = require('express-session');  // ORDER MATTERS
+const passport     = require('passport');         // SESSION THEN PASSPORT
 
+// run all the code inside "passport-config.js"
+require('./config/passport-config.js');
 
 mongoose.connect('mongodb://localhost/express-users');
 
@@ -27,9 +31,26 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(layouts);
+app.use(session({
+  secret:'qewr sdfj dsf qewop', // value doesn't matter, has to be different for every app
+  resave:true,
+  saveUninitialized:true
+})); // parentheses for .use( and (session
+
+// PASSPORT Middlewares
+//    need to come after app.use(session({...}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+// ROUTES GO HERE 👇🏽👇🏽👇🏽👇🏽 ----------------------------
 
 const index = require('./routes/index');
 app.use('/', index);
+
+const authRoute = require('./routes/auth-routes.js');
+app.use('/', authRoute);
+
+// ---------------------------------------------------
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
