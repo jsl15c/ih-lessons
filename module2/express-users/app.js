@@ -62,6 +62,9 @@ app.use('/', index);
 
 const authRoute = require('./routes/auth-routes.js');
 app.use('/', authRoute);
+
+const roomRoute = require('./routes/room-routes.js');
+app.use('/', roomRoute);
 // ---------------------------------------------------
 
 // catch 404 and forward to error handler

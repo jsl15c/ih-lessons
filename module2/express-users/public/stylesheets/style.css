@@ -59,3 +59,17 @@ a {
   width: 380px;
   margin:auto;
 }
+
+.facebook-btn, .google-btn {
+  text-decoration: none;
+  color:#fff;
+  padding:10px;
+}
+
+.facebook-btn {
+  background:#3b5998;
+}
+
+.google-btn {
+  background:#d34836;
+}

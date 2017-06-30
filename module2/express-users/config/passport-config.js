@@ -66,3 +66,104 @@ passport.use(new LocalStrategy(
    );
  })
 );
+
+// passport-facebook (login with your facebook account)
+const FbStrategy = require('passport-facebook').Strategy;
+passport.use(new FbStrategy(
+  {
+    clientID:'273563533050519', // settings object
+    clientSecret:'065b35bc46c692a30eda35f03872d45f',
+    callbackURL:'/auth/facebook/callback'  // out route - name whatever you want
+  },
+
+  (accessToken, refreshToken, profile, next) => { // callback function
+    // will be called when a user allows us to log them in with facebook
+    console.log('');
+    console.log('🌎 🌎 🌎 🌎 🌎 facebook profile info 🌎 🌎 🌎 🌎 🌎');
+    console.log(profile);
+    console.log('');
+
+    UserModel.findOne(
+      {facebookId: profile.id},
+      (err, userInfo) => {
+        if (err) {
+          next(err);
+          return;
+        }
+        // if first time loggin in with fb, userInfo will be empty
+        if (userInfo) {
+          next(null, userInfo);
+          return;
+        }
+
+        // if its the first time they log in, SAVE THEM IN THE DB!
+        const theUser = new UserModel({
+          fullname:profile.displayName,
+          facebookId:profile.Id,
+        });
+        theUser.save((err) => {
+          if (err) {
+            next(err);
+            return;
+          }
+          next(null, theUser);
+        });
+      }
+    );
+    // Receiving the Facebook user info and SAVING IT!
+    //Unless we have already saved their info, in which case we log them in
+  }
+));
+
+
+const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+passport.use(new GoogleStrategy(
+  {
+    clientID:'21120536470-etk12f9pnjbp0jgocl47nbghugq1lhrb.apps.googleusercontent.com', // settings object
+    clientSecret:'xcywo1vDOnn2FOWz8laIux1A',
+    callbackURL:'/auth/google/callback' // out route - name whatever you want
+  },
+
+  (accessToken, refreshToken, profile, next) => { // callback function
+    // will be called when a user allows us to log them in with facebook
+    console.log('');
+    console.log('🛑 🛑 🛑 🛑 🛑 google profile info 🛑 🛑 🛑 🛑 🛑');
+    console.log(profile);
+    console.log('');
+
+    UserModel.findOne(
+      {googleId: profile.id},
+      (err, userInfo) => {
+        if (err) {
+          next(err);
+          return;
+        }
+        // if first time loggin in with fb, userInfo will be empty
+        if (userInfo) {
+          next(null, userInfo);
+          return;
+        }
+
+        // if its the first time they log in, SAVE THEM IN THE DB!
+        const theUser = new UserModel({
+          fullname:profile.displayName,
+          googleId:profile.Id,
+        });
+
+        if (theUser.fullname === undefined) {
+          theUser.fullname = profile.emails[0].value;
+        }
+
+        theUser.save((err) => {
+          if (err) {
+            next(err);
+            return;
+          }
+          next(null, theUser);
+        });
+      }
+    );
+    // Receiving the Facebook user info and SAVING IT!
+    //Unless we have already saved their info, in which case we log them in
+  }
+));

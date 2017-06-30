@@ -1,0 +1,21 @@
+<h2>Available Rooms</h2>
+
+<ul>
+<%  rooms.forEach((room) => { %>
+    <li>
+      <h3><%= room.name %></h3>
+      <p>
+        Owner: <i><%= room.owner %></i>
+      </p>
+      <% if (room.hasGhosts) { %>
+        <p>
+          Ghost Friendly
+        </p>
+      <% } else { %>
+        <p>
+          Ghost FREE
+        </p>
+      <% } %>
+    </li>
+<% }) %>
+</ul>

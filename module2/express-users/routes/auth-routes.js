@@ -80,5 +80,39 @@ router.get('/logout', (req, res, next) => {
 });
 
 
+// SOCIAL LOGINS ---------------------------------------------------------------------
+router.get('/auth/facebook', passport.authenticate('facebook'));    // where user goes when they login
+router.get('/auth/facebook/callback',                               // where user goes after login
+  passport.authenticate(
+    'facebook', // name of strategy
+    {           // settings object
+      successRedirect:'/',
+      failureRedirect:'/login'
+    }
+  ));
+
+
+  router.get('/auth/google',
+    passport.authenticate(
+      'google', // name of strategy
+      {           // settings object
+        scope:[
+          'https://www.googleapis.com/auth/plus.login',
+          'https://www.googleapis.com/auth/plus.profile.emails.read'
+         ],
+
+      }
+    ));
+
+router.get('/auth/google/callback',
+  passport.authenticate(
+    'google', // name of strategy
+    {           // settings object
+      successRedirect:'/',
+      failureRedirect:'/login'
+    }
+  ));
+
+// END SOCIAL LOGINS ---------------------------------------------------------------------
 
 module.exports = router;
