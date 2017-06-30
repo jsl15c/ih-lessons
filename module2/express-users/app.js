@@ -37,19 +37,31 @@ app.use(session({
   saveUninitialized:true
 })); // parentheses for .use( and (session
 
+
 // PASSPORT Middlewares
 //    need to come after app.use(session({...}));
 app.use(passport.initialize());
 app.use(passport.session());
+// ----------------------------------------------
+
+
+// THIS MIDDELWARE CREATES THE "currentUser" varaivable for ALL views
+//    check if the user is loggged in
+app.use((req, res, next) => {
+if (req.user) {
+  // creates the currentUser variable
+  res.locals.currentUser = req.user;
+  }
+  // if you don't include "next()" your app will hang
+  next();
+});
 
 // ROUTES GO HERE 👇🏽👇🏽👇🏽👇🏽 ----------------------------
-
 const index = require('./routes/index');
 app.use('/', index);
 
 const authRoute = require('./routes/auth-routes.js');
 app.use('/', authRoute);
-
 // ---------------------------------------------------
 
 // catch 404 and forward to error handler

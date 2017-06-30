@@ -7,7 +7,12 @@ const router = express.Router();
 const UserModel = require('../models/user-model.js');
 
 router.get('/signup', (req, res, next) => {
-  res.render('auth-views/signup-view.ejs');
+  if (req.user) {
+    res.redirect('/');
+  }
+  else {
+    res.render('auth-views/signup-view.ejs');
+  }
 });
 
 router.post('/signup', (req, res, next) => {
@@ -44,7 +49,35 @@ router.post('/signup', (req, res, next) => {
     });
   });
 });
+// END REGISTRATION
 
+const passport = require('passport');
+
+// START LOG IN
+router.get('/login', (req, res, next) => {
+  if (req.user) {
+    res.redirect('/');
+  }
+  else {
+    res.render('auth-views/login-view.ejs');
+  }
+});
+
+router.post('/login', passport.authenticate(
+  'local', // 1st arg -> name of strategy (determined by the strategy's npm package)
+  {   // 2nd arg -> settings object
+    successRedirect:'/',
+    failureRedirect:'login'
+  }
+));
+// END LOG IN
+
+// LOG OUT ROUTES
+router.get('/logout', (req, res, next) => {
+// req.logout() functioned is defined by the passport middleware (app.js)
+  req.logout();
+  res.redirect('/');
+});
 
 
 
